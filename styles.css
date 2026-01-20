@@ -1,0 +1,276 @@
+/* 1. VARIABLES Y CONFIGURACIÓN BASE */
+:root {
+    --primary-color: #a08d42;   
+    --accent-color: #f39c12;   
+    --bg-warm: #b4872d;          
+    --text-dark: #040101;
+    --white: #0d0d0d;
+    --transition: all 0.3s ease;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth; /* Desplazamiento suave al hacer clic en menú */
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-warm);
+    color: var(--text-dark);
+    line-height: 1.6;
+}
+
+/* 2. HEADER Y NAVEGACIÓN */
+.main-header {
+    background-color: var(--white);
+    padding: 1.5rem;
+    text-align: center;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo-img {
+    height: 110px;
+    width: auto;
+    margin-bottom: 5px;
+}
+
+.main-header h1 {
+    font-size: 1.4rem;
+    color: var(--primary-color);
+    letter-spacing: 1px;
+}
+
+.main-header h1 span {
+    color: var(--accent-color);
+    font-weight: 300;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 1rem;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--primary-color);
+    font-weight: 600;
+    font-size: 20px;
+    text-transform: uppercase;
+    transition: var(--transition);
+}
+
+.nav-links a:hover, .nav-links a.active {
+    color: var(--accent-color);
+}
+
+/* 3. HERO / INTRODUCCIÓN */
+.hero {
+    text-align: center;
+    padding: 4rem 1.5rem;
+    background: linear-gradient(rgba(255,250,240,0.8), rgba(255,250,240,0.8)), 
+                url('../assets/pattern.png'); /* Opcional: un patrón de fondo */
+}
+
+.hero h2 {
+    font-size: 2.2rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.hero p {
+    max-width: 600px;
+    margin: 0 auto;
+    font-size: 1.1rem;
+    color: #555;
+}
+
+/* 4. GRID DE GALERÍA (FOTOS) */
+.gallery-container {
+    display: grid;
+    /* Responsive: se ajusta solo de 1 a 3 columnas */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.gallery-item {
+    position: relative;
+    background: var(--white);
+    padding: 10px; /* Efecto marco de foto antigua */
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    overflow: hidden;
+    aspect-ratio: 1 / 1; 
+}
+
+.image-wrapper {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    border-radius: 4px;
+}
+
+.image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+/* Efecto al pasar el mouse */
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(61, 43, 31, 0.7); /* Color café con transparencia */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: var(--transition);
+}
+
+.gallery-item:hover .overlay {
+    opacity: 1;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.1);
+}
+
+.text {
+    color: var(--white);
+    text-align: center;
+    padding: 10px;
+}
+
+/* 5. SECCIÓN DE VIDEO LOCAL */
+.video-section {
+    padding: 5rem 1.5rem;
+    background-color: var(--primary-color); /* Fondo oscuro para que resalte el video */
+    color: var(--white);
+    text-align: center;
+}
+
+.video-section h2 {
+    margin-bottom: 2rem;
+    color: var(--accent-color);
+}
+
+.video-container {
+    max-width: 300px;
+    margin: 0 auto;
+    border: 5px solid rgba(255,255,255,0.1);
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+}
+
+.video-local {
+    width: 100%;
+    display: block;
+    outline: none;
+}
+
+.video-caption {
+    margin-top: 1.5rem;
+    font-style: italic;
+    opacity: 0.8;
+}
+
+/* 6. SECCIÓN HISTORIA (ABOUT) */
+.about-section {
+    padding: 5rem 1.5rem;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.about-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+}
+
+.about-img {
+    width: 100%;
+    max-width: 400px;
+    border-radius: 50%; /* Foto de Shelby en círculo */
+    border: 8px solid var(--white);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+.about-text h2 {
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+}
+
+/* 7. FOOTER */
+.main-footer {
+    background-color: var(--white); /* Este es el color oscuro #0d0d0d */
+    padding: 3rem 1.5rem;
+    text-align: center;
+    border-top: 1px solid #333; /* Un borde sutil para que no se pierda el corte */
+}
+
+/* Esta es la corrección específica para que el texto sea legible */
+.main-footer p {
+    color: var(--primary-color); /* Usamos el tono dorado para que resalte */
+    font-weight: 500;
+    margin-bottom: 1.5rem;
+}
+
+.socials a {
+    display: inline-block;
+    margin: 10px;
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: bold;
+    border: 1px solid var(--primary-color);
+    padding: 8px 15px;
+    border-radius: 20px;
+    transition: var(--transition);
+}
+
+.socials a:hover {
+    background-color: var(--primary-color);
+    color: #ffffff; /* Color blanco real al pasar el mouse */
+}
+
+/* 8. RESPONSIVE (TABLETS Y PC) */
+@media (min-width: 768px) {
+    .main-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 5%;
+    }
+
+    .nav-links {
+        margin-top: 0;
+    }
+
+    .about-content {
+        flex-direction: row;
+        text-align: left;
+    }
+
+    .hero h2 {
+        font-size: 3rem;
+    }
+}
